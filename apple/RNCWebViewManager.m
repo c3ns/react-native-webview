@@ -251,15 +251,15 @@ shouldStartLoadForRequest:(NSMutableDictionary<NSString *, id> *)request
   callback(request);
 
   // Block the main thread for a maximum of 250ms until the JS thread returns
-  if ([_shouldStartLoadLock lockWhenCondition:0 beforeDate:[NSDate dateWithTimeIntervalSinceNow:.25]]) {
-    BOOL returnValue = _shouldStartLoad;
-    [_shouldStartLoadLock unlock];
-    _shouldStartLoadLock = nil;
-    return returnValue;
-  } else {
-    RCTLogWarn(@"Did not receive response to shouldStartLoad in time, defaulting to YES");
+//   if ([_shouldStartLoadLock lockWhenCondition:0 beforeDate:[NSDate dateWithTimeIntervalSinceNow:.25]]) {
+//     BOOL returnValue = _shouldStartLoad;
+//     [_shouldStartLoadLock unlock];
+//     _shouldStartLoadLock = nil;
+//     return returnValue;
+//   } else {
+//     RCTLogWarn(@"Did not receive response to shouldStartLoad in time, defaulting to YES");
     return YES;
-  }
+//   }
 }
 
 RCT_EXPORT_METHOD(startLoadWithResult:(BOOL)result lockIdentifier:(NSInteger)lockIdentifier)
